@@ -1,0 +1,44 @@
+version: '2'
+
+services:
+  api:
+    build: .
+    image: cinnamonhab/cinnamonapi
+    volumes:
+      - .:/cinnamonapi
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    volumes_from:
+      - box
+    command: ./scripts/start_server.sh
+    ports:
+      - 3000:3000
+    env_file:
+      - env/api.env
+      - env/db.env
+    depends_on:
+      - db
+    links:
+      - db
+
+  box:
+    image: busybox
+    volumes:
+      - /box
+
+  db:
+    image: mdillon/postgis:9.6
+    environment:
+      - PGDATA=/box
+    #volumes:
+    #  - ./scripts/postgres-fix-ownership.sh:/docker-entrypoint-initdb.d/postgres-fix-ownership.sh
+    #  - ./db-data:/var/lib/postgresql/data
+    volumes_from:
+      - db-box
+    env_file:
+      - env/db.env
+
+  db-box:
+    image: busybox
+    volumes:
+      - /box
