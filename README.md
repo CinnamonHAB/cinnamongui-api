@@ -1,24 +1,15 @@
-# README
+# CinnamonGUI API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Developing
 
-Things you may want to cover:
+Run
 
-* Ruby version
+```
+docker-compose run /bin/bash
+```
 
-* System dependencies
+In the console run `./scripts/start_server.sh` at least once, so gems and database get set up.
 
-* Configuration
+Afterwards, you can start the server using `bundle exec rails s -b '0.0.0.0'`. Also, all other rails commands work as expected.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You can access the app at http://localhost:3000.
