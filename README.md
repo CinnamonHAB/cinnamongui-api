@@ -1,5 +1,7 @@
 # CinnamonGUI API
 
+Before using or developing create `api.env` and `db.env` in the `env/` directory. See `env/*.example` files.
+
 ## Developing
 
 Run
