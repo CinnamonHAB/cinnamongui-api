@@ -7,7 +7,7 @@ Before using or developing create `api.env` and `db.env` in the `env/` directory
 Run
 
 ```
-docker-compose run /bin/bash
+docker-compose run api /bin/bash
 ```
 
 In the console run `./scripts/start_server.sh` at least once, so gems and database get set up.
