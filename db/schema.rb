@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20161229091048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "floorplan_objects", force: :cascade do |t|
+    t.float    "angle"
+    t.text     "background_color"
+    t.text     "fill"
+    t.float    "height"
+    t.float    "width"
+    t.float    "left"
+    t.float    "top"
+    t.float    "opacity"
+    t.float    "scale_x"
+    t.float    "scale_y"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.text     "type"
+  end
 
 end
