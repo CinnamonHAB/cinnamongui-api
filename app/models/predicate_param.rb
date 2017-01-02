@@ -1,0 +1,2 @@
+class PredicateParam < ApplicationRecord
+end

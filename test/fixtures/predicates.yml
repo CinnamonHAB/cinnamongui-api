@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  keyword: MyText
+  domain_id: 1
+  predicate_param_ids: 1
+
+two:
+  keyword: MyText
+  domain_id: 1
+  predicate_param_ids: 1

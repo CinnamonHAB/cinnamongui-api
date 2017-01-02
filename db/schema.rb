@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229091048) do
+ActiveRecord::Schema.define(version: 20170102192027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "domains", force: :cascade do |t|
+    t.text     "name"
+    t.integer  "floorplan_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "floorplan_objects", force: :cascade do |t|
     t.float    "angle"
@@ -29,6 +36,26 @@ ActiveRecord::Schema.define(version: 20161229091048) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.text     "type"
+  end
+
+  create_table "floorplans", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "predicate_params", force: :cascade do |t|
+    t.text     "name"
+    t.text     "param_type"
+    t.integer  "predicate_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "predicates", force: :cascade do |t|
+    t.text     "keyword"
+    t.integer  "domain_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
