@@ -1,4 +1,4 @@
 class Domain < ApplicationRecord
-  belongs_to :floorplan
+  has_many :floorplans
   has_many :predicates
 end

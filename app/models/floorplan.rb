@@ -1,3 +1,3 @@
 class Floorplan < ApplicationRecord
-  has_one :domain
+  belongs_to :domain
 end
