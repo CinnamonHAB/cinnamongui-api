@@ -8,11 +8,11 @@ domain = Domain.create!({name: "default_domain"})
 domain.floorplans.create!
 
 pred = {}
-pred[:lamp] = domain.predicates.create!({keyword: "LAMP"})
-pred[:switch] = domain.predicates.create!({keyword: "SWITCH"})
-pred[:affects] = domain.predicates.create!({keyword: "AFFECTS"})
-pred[:group] = domain.predicates.create!({keyword: "GROUP"})
-pred[:in] = domain.predicates.create!({keyword: "IN"})
+pred[:lamp] = domain.predicates.create!({keyword: "LAMP", predicate_type: :device})
+pred[:switch] = domain.predicates.create!({keyword: "SWITCH", predicate_type: :device})
+pred[:affects] = domain.predicates.create!({keyword: "AFFECTS", predicate_type: :link})
+pred[:group] = domain.predicates.create!({keyword: "GROUP", predicate_type: :other})
+pred[:in] = domain.predicates.create!({keyword: "IN", predicate_type: :other})
 
 pred[:lamp].predicate_params.create!({name: "l", param_type: nil})
 pred[:switch].predicate_params.create!({name: "s", param_type: nil})
