@@ -10,7 +10,16 @@ class FloorplansController < ApplicationController
 
   # GET /floorplans/1
   def show
-    render json: @floorplan, include: { domain: { include:  { predicates: { include: :predicate_params } } } }
+    render json: @floorplan, include: {
+      domain: {
+        include: {
+          predicates: { include: :predicate_params }
+        }
+      },
+      problem: {
+        include: :device_definitions
+      }
+    }
   end
 
   private

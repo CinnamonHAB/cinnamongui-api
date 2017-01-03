@@ -58,6 +58,39 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
+-- Name: device_definitions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE device_definitions (
+    id integer NOT NULL,
+    problem_id integer,
+    predicate_id integer,
+    name text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: device_definitions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE device_definitions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: device_definitions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE device_definitions_id_seq OWNED BY device_definitions.id;
+
+
+--
 -- Name: domains; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -106,7 +139,8 @@ CREATE TABLE floorplan_objects (
     scale_y double precision,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    type text
+    type text,
+    device_definition_id integer
 );
 
 
@@ -227,12 +261,51 @@ ALTER SEQUENCE predicates_id_seq OWNED BY predicates.id;
 
 
 --
+-- Name: problems; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE problems (
+    id integer NOT NULL,
+    name text,
+    floorplan_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: problems_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE problems_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: problems_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE problems_id_seq OWNED BY problems.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE schema_migrations (
     version character varying NOT NULL
 );
+
+
+--
+-- Name: device_definitions id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY device_definitions ALTER COLUMN id SET DEFAULT nextval('device_definitions_id_seq'::regclass);
 
 
 --
@@ -271,11 +344,26 @@ ALTER TABLE ONLY predicates ALTER COLUMN id SET DEFAULT nextval('predicates_id_s
 
 
 --
+-- Name: problems id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY problems ALTER COLUMN id SET DEFAULT nextval('problems_id_seq'::regclass);
+
+
+--
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: device_definitions device_definitions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY device_definitions
+    ADD CONSTRAINT device_definitions_pkey PRIMARY KEY (id);
 
 
 --
@@ -319,6 +407,14 @@ ALTER TABLE ONLY predicates
 
 
 --
+-- Name: problems problems_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY problems
+    ADD CONSTRAINT problems_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -340,6 +436,9 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170102191904'),
 ('20170102192027'),
 ('20170102204658'),
-('20170103095631');
+('20170103095631'),
+('20170103184035'),
+('20170103192049'),
+('20170103192150');
 
 

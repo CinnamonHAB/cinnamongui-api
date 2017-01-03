@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  problem_id: 1
+  predicate_id: 1
+  name: MyText
+  floorplan_object_id: 1
+
+two:
+  problem_id: 1
+  predicate_id: 1
+  name: MyText
+  floorplan_object_id: 1
