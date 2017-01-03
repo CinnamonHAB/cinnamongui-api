@@ -17,7 +17,16 @@ class FloorplansController < ApplicationController
         }
       },
       problem: {
-        include: :device_definitions
+        include: {
+          device_definitions: {
+            include: {
+              predicate: {
+                include: :predicate_params
+              },
+              floorplan_object: {}
+            }
+          }
+        }
       }
     }
   end

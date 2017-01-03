@@ -3,4 +3,5 @@ class Predicate < ApplicationRecord
   has_many :predicate_params
 
   enum predicate_type: {device: 'device', link: 'link', other: 'other'}
+
 end
