@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :floorplans, only: [:index, :show] do
     resources :problems, only: :none do
-      resources :device_definitions
+      resources :device_definitions, only: [:show, :create, :update, :destroy]
     end
   end
 end

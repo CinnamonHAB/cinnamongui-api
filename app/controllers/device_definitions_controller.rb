@@ -39,6 +39,13 @@ class DeviceDefinitionsController < ApplicationController
     }
   end
 
+  def destroy
+    @device_definition = @problem.device_definitions.find params[:id]
+    @device_definition.destroy!
+
+    head :ok
+  end
+
   private
 
     def device_definition_params
