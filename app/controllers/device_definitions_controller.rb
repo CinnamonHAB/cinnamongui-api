@@ -21,7 +21,8 @@ class DeviceDefinitionsController < ApplicationController
     render json: @device_definition, include: {
       predicate: {
         include: :predicate_params
-      }
+      },
+      floorplan_object: { }
     }
   end
 
