@@ -46,6 +46,6 @@ class FloorplanObjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def floorplan_object_params
-      params.require(:floorplan_object).permit(:angle, :background_color, :fill, :height, :width, :left, :top, :opacity, :scale_x, :scale_y)
+      params.require(:floorplan_object).permit(:angle, :background_color, :fill, :height, :width, :left, :top, :opacity, :scaleX, :scaleY)
     end
 end

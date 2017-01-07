@@ -135,8 +135,8 @@ CREATE TABLE floorplan_objects (
     "left" double precision,
     top double precision,
     opacity double precision,
-    scale_x double precision,
-    scale_y double precision,
+    "scaleX" double precision,
+    "scaleY" double precision,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     type text,
@@ -439,6 +439,7 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170103095631'),
 ('20170103184035'),
 ('20170103192049'),
-('20170103192150');
+('20170103192150'),
+('20170107094929');
 
 

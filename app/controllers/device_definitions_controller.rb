@@ -46,7 +46,7 @@ class DeviceDefinitionsController < ApplicationController
     end
 
     def floorplan_object_params
-      params.require(:device_definition).require(:floorplan_object).permit(:angle, :background_color, :fill, :height, :width, :left, :top, :opacity, :scale_x, :scale_y)
+      params.require(:device_definition).require(:floorplan_object).permit(:angle, :background_color, :fill, :height, :width, :left, :top, :opacity, :scaleX, :scaleY)
     end
 
     def load_floorplan
