@@ -27,6 +27,16 @@ class DeviceDefinitionsController < ApplicationController
   end
 
   def update
+    @device_definition = @problem.device_definitions.find params[:id]
+    @device_definition.update_attributes! device_definition_params
+    @device_definition.floorplan_object.update_attributes! floorplan_object_params
+
+    render json: @device_definition, include: {
+      predicate: {
+        include: :predicate_params
+      },
+      floorplan_object: { }
+    }
   end
 
   private
