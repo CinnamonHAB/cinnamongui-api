@@ -20,6 +20,10 @@ class LinkDefinitionsController < ApplicationController
   end
 
   def destroy
+    @link_definition = @problem.link_definitions.find params[:id]
+    @link_definition.destroy!
+
+    head :ok
   end
 
   private
