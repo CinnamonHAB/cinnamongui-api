@@ -40,7 +40,7 @@ class DeviceDefinitionsController < ApplicationController
   end
 
   def destroy
-    if params[:id] = '*'
+    if params[:id] == '*'
       @problem.device_definitions.destroy_all
     else
       @device_definition = @problem.device_definitions.find params[:id]
