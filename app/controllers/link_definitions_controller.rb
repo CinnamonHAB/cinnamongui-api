@@ -14,9 +14,24 @@ class LinkDefinitionsController < ApplicationController
   end
 
   def create
-  end
+    @link_definition = @problem.link_definitions.build link_definition_params
+    @link_definition.save!
 
-  def update
+    ldps = params[:link_definition][:link_definition_params].map do |ldp|
+      ldp.permit([:device_definition_id, :predicate_param_id])
+    end
+
+    @link_definition_params = @link_definition.link_definition_params.build ldps
+    @link_definition_params.each do |ldp|
+      ldp.save!
+    end
+
+    render json: @link_definition, include: {
+      predicate: {
+        include: :predicate_params
+      },
+      link_definition_params: { }
+    }
   end
 
   def destroy
@@ -27,6 +42,14 @@ class LinkDefinitionsController < ApplicationController
   end
 
   private
+
+    def link_definition_params
+      params.require(:link_definition).permit :predicate_id
+    end
+
+    def link_definition_params_params
+      params.require(:link_definition).permit(:link_definition_params => [:device_definition_id, :predicate_param_id])
+    end
 
     def load_floorplan
       @floorplan = Floorplan.find(params[:floorplan_id])
