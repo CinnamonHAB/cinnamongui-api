@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  link_definition_id: 1
+  predicate_param_id: 1
+  device_definition_id: 1
+
+two:
+  link_definition_id: 1
+  predicate_param_id: 1
+  device_definition_id: 1

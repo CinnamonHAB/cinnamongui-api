@@ -195,6 +195,71 @@ ALTER SEQUENCE floorplans_id_seq OWNED BY floorplans.id;
 
 
 --
+-- Name: link_definition_params; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE link_definition_params (
+    id integer NOT NULL,
+    link_definition_id integer,
+    predicate_param_id integer,
+    device_definition_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: link_definition_params_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE link_definition_params_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: link_definition_params_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE link_definition_params_id_seq OWNED BY link_definition_params.id;
+
+
+--
+-- Name: link_definitions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE link_definitions (
+    id integer NOT NULL,
+    problem_id integer,
+    predicate_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: link_definitions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE link_definitions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: link_definitions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE link_definitions_id_seq OWNED BY link_definitions.id;
+
+
+--
 -- Name: predicate_params; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -330,6 +395,20 @@ ALTER TABLE ONLY floorplans ALTER COLUMN id SET DEFAULT nextval('floorplans_id_s
 
 
 --
+-- Name: link_definition_params id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY link_definition_params ALTER COLUMN id SET DEFAULT nextval('link_definition_params_id_seq'::regclass);
+
+
+--
+-- Name: link_definitions id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY link_definitions ALTER COLUMN id SET DEFAULT nextval('link_definitions_id_seq'::regclass);
+
+
+--
 -- Name: predicate_params id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -391,6 +470,22 @@ ALTER TABLE ONLY floorplans
 
 
 --
+-- Name: link_definition_params link_definition_params_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY link_definition_params
+    ADD CONSTRAINT link_definition_params_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: link_definitions link_definitions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY link_definitions
+    ADD CONSTRAINT link_definitions_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: predicate_params predicate_params_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -440,6 +535,8 @@ INSERT INTO schema_migrations (version) VALUES
 ('20170103184035'),
 ('20170103192049'),
 ('20170103192150'),
-('20170107094929');
+('20170107094929'),
+('20170108232937'),
+('20170108233246');
 
 
