@@ -8,6 +8,10 @@ services:
       - .:/cinnamonapi
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
+      - /tmp/demo.items:/tmp/demo.items
+      - /tmp/pddl_init.txt:/tmp/pddl_init.txt
+      - /tmp/target_states.json:/tmp/target_states.json
+      - /var/run/docker.sock:/var/run/docker.sock
     volumes_from:
       - box
     command: ./scripts/start_server.sh
