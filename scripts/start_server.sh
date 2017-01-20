@@ -17,6 +17,7 @@ pushd $APP_ROOT
 
   bundle exec rails db:create
   bundle exec rails db:migrate
+  bundle exec rake db:seed
 
   ps  -p "$(cat tmp/pids/server.pid)" > /dev/null 2>&1
   if [ $? -eq 0 ] ; then
